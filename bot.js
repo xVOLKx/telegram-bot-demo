@@ -1,20 +1,19 @@
+require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = '8909671700:AAHvDP85rdCZzjSyztbclnQZEBwfHCGaxoM';
+const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
-// Команда /start
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-    bot.sendMessage(chatId, '✅ Привет! Я бот, который работает на Render. Я умею отвечать на любое сообщение.');
+    bot.sendMessage(chatId, '✅ Бот работает! Я на Render.');
 });
 
-// Ответ на любое текстовое сообщение (кроме /start)
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
     if (text !== '/start') {
-        bot.sendMessage(chatId, `🔁 Ты написал: ${text}`);
+        bot.sendMessage(chatId, `🔁 Эхо: ${text}`);
     }
 });
 
