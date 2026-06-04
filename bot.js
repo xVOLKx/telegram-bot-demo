@@ -13,7 +13,7 @@ bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
     if (text !== '/start') {
-        bot.sendMessage(chatId, `🔁 Эхо: ${text}`);
+        bot.sendMessage(chatId, `Это: ${text}`);
     }
 });
 
